@@ -14,12 +14,11 @@ protocol _CredentialsField: CellData {
 	var placeholger: String? { get set }
 	var onNext: Command<String>? { get set }
 	var onBack: Command<Void>? { get set }
-	
 }
 
 extension _CredentialsField {
 	
-	public var height: CGFloat { return 100 }
+	public var height: CGFloat { return 150 }
 	
 	public func hashValues() -> [Int] {
 		return [
@@ -45,8 +44,11 @@ extension _CredentialsField {
 }
 
 class CredentialsField: UITableViewCell {
-	@IBOutlet weak var title: UILabel!
-	@IBOutlet weak var field: UITextField!
+	@IBOutlet private weak var title: UILabel!
+	@IBOutlet private weak var field: UITextField!
+	
+	@IBOutlet private weak var buttonNext: UIButton!
+	@IBOutlet private weak var buttonBack: UIButton!
 	
 	var onNext: Command<String>?
 	var onBack: Command<Void>?
@@ -58,21 +60,22 @@ class CredentialsField: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 	
 	@IBAction func pressNext(_ sender: UIButton) {
-		
+		guard let text = self.field.text else { return }
+		onNext?.perform(with: text)
 	}
 	
 	@IBAction func pressBack(_ sender: UIButton) {
-		
+		self.onBack?.perform(with: ())
 	}
 	
 	func configure(data: _CredentialsField) {
 		self.title.text = data.title
 		self.field.placeholder = data.placeholger
+		self.onNext = data.onNext
+		self.onBack = data.onBack
 	}
     
 }

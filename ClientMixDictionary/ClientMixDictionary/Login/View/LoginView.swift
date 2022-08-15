@@ -14,6 +14,13 @@ class LoginView: UIView {
 	
 	struct ViewState {
 		
+		struct FieldCell: _CredentialsField {
+			var id: String
+			var title: String?
+			var placeholger: String?
+			var onNext: Command<String>?
+			var onBack: Command<Void>?
+		}
 	}
 	
 	override init(frame: CGRect) {
@@ -32,11 +39,10 @@ class LoginView: UIView {
 	}
 	
 	private func setupTableView() {
-		table = BaseTableView(frame: .zero, style: .grouped)
+		table = BaseTableView(frame: .zero, style: .insetGrouped)
 		table.translatesAutoresizingMaskIntoConstraints = false
 		self.addSubview(table)
-		//backgroundColor = .systemBackground
-		table.backgroundColor = .red
+		backgroundColor = .systemBackground
 		NSLayoutConstraint.activate([
 			table.topAnchor.constraint(equalTo: topAnchor),
 			table.leadingAnchor.constraint(equalTo: leadingAnchor),
