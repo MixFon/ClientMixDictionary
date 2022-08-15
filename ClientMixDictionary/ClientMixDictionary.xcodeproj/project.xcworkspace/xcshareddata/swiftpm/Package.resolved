@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "coreextensions",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/MosMetro-official/CoreExtensions.git",
+      "state" : {
+        "branch" : "main",
+        "revision" : "b8cf432bd4eb1630f9013787b80048c41a2762c1"
+      }
+    },
+    {
+      "identity" : "coretableview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/MosMetro-official/CoreTableView",
+      "state" : {
+        "branch" : "0.0.7",
+        "revision" : "33d56388ac9c76db8409ef32c2bdebb22f702320"
+      }
+    }
+  ],
+  "version" : 2
+}
