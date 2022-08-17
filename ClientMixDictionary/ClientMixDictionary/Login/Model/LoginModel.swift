@@ -13,7 +13,17 @@ enum LoginModel {
 		
 	}
 	
-	struct Response {
+	enum Response {
+		
+		struct Menu {
+			var chosenLogin: Command<Void>?
+			var chosenRegistration: Command<Void>?
+		}
+		
+		struct ChoseLogin {
+			var chosenEmale: Command<Void>?
+			var chosenPhone: Command<Void>?
+		}
 		
 	}
 	

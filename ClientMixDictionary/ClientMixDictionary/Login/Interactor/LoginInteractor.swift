@@ -6,9 +6,12 @@
 //
 
 import Foundation
+import CoreTableView
 
 protocol _LoginInteractor {
 	func makeLogin(request: LoginModel.Request)
+	func makeMenu(request: LoginModel.Request)
+	func makeChoseLogin(request: LoginModel.Request)
 }
 
 protocol _LoginDataStore {
@@ -24,9 +27,31 @@ final class LoginInteractor: _LoginInteractor, _LoginDataStore {
 	}
 	
 	func makeLogin(request: LoginModel.Request) {
-		let response = LoginModel.Response()
-		self.presenter?.makeLogin(response: response)
 	}
 	
+	func makeMenu(request: LoginModel.Request) {
+		let response = LoginModel.Response.Menu(
+			chosenLogin: Command {
+				print("Menu")
+				self.makeChoseLogin(request: .init())
+			},
+			chosenRegistration: Command {
+				print("REG")
+			}
+		)
+		self.presenter?.makeMenu(response: response)
+	}
+	
+	func makeChoseLogin(request: LoginModel.Request) {
+		let response = LoginModel.Response.ChoseLogin(
+			chosenEmale: Command {
+				print("Emale")
+			},
+			chosenPhone: Command {
+				print("Phone")
+			}
+		)
+		self.presenter?.makeChoseLogin(response: response)
+	}
 	
 }

@@ -9,14 +9,14 @@ import UIKit
 import CoreTableView
 import CoreExtensions
 
-protocol _CredentialsField: CellData {
+protocol _CredentialsCell: CellData {
 	var title: String? { get set }
 	var placeholger: String? { get set }
 	var onNext: Command<String>? { get set }
 	var onBack: Command<Void>? { get set }
 }
 
-extension _CredentialsField {
+extension _CredentialsCell {
 	
 	public var height: CGFloat { return 150 }
 	
@@ -30,20 +30,20 @@ extension _CredentialsField {
 	public var backgroundColor: UIColor? { return nil }
 	
 	public func prepare(cell: UITableViewCell, for tableView: UITableView, indexPath: IndexPath) {
-		guard let cell = cell as? CredentialsField else { return }
+		guard let cell = cell as? CredentialsCell else { return }
 		cell.configure(data: self)
 	}
 	
 	public func cell(for tableView: UITableView, indexPath: IndexPath) -> UITableViewCell {
-		tableView.register(CredentialsField.nib(), forCellReuseIdentifier: CredentialsField.identifire)
+		tableView.register(CredentialsCell.nib(), forCellReuseIdentifier: CredentialsCell.identifire)
 		guard
-			let cell = tableView.dequeueReusableCell(withIdentifier: CredentialsField.identifire, for: indexPath) as? CredentialsField
+			let cell = tableView.dequeueReusableCell(withIdentifier: CredentialsCell.identifire, for: indexPath) as? CredentialsCell
 		else { return .init() }
 		return cell
 	}
 }
 
-class CredentialsField: UITableViewCell {
+class CredentialsCell: UITableViewCell {
 	@IBOutlet private weak var title: UILabel!
 	@IBOutlet private weak var field: UITextField!
 	
@@ -71,7 +71,7 @@ class CredentialsField: UITableViewCell {
 		self.onBack?.perform(with: ())
 	}
 	
-	func configure(data: _CredentialsField) {
+	func configure(data: _CredentialsCell) {
 		self.title.text = data.title
 		self.field.placeholder = data.placeholger
 		self.onNext = data.onNext

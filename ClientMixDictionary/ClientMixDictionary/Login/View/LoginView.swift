@@ -14,12 +14,27 @@ class LoginView: UIView {
 	
 	struct ViewState {
 		
-		struct FieldCell: _CredentialsField {
+		struct FieldCell: _CredentialsCell {
 			var id: String
 			var title: String?
 			var placeholger: String?
 			var onNext: Command<String>?
 			var onBack: Command<Void>?
+		}
+		
+		struct MenuCell: _ImageCell {
+			var id: String
+			var image: UIImage?
+			var title: String?
+			var onItemSelect: Command<Void>
+		}
+		
+		struct MenuHeader: _TitleHeaderView {
+			var id: String
+			var title: String
+			var style: TitleHeaderView.Style
+			var backgroundColor: UIColor
+			var isInsetGrouped: Bool
 		}
 	}
 	

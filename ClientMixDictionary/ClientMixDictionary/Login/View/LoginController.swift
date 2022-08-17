@@ -33,7 +33,9 @@ class LoginController: UIViewController {
 		super.viewDidLoad()
 		view = nestedView
 		let request = LoginModel.Request()
-		self.interactor?.makeLogin(request: request)
+		//self.interactor?.makeLogin(request: request)
+		self.interactor?.makeMenu(request: request)
+		
 	}
 	
 	private func setup() {

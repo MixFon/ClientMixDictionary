@@ -9,7 +9,9 @@ import Foundation
 import CoreTableView
 
 protocol _LoginPresenter {
-	func makeLogin(response: LoginModel.Response)
+	func makeLogin()
+	func makeMenu(response: LoginModel.Response.Menu)
+	func makeChoseLogin(response: LoginModel.Response.ChoseLogin)
 }
 
 final class LoginPresenter: _LoginPresenter {
@@ -20,7 +22,7 @@ final class LoginPresenter: _LoginPresenter {
 		self.controller = controller
 	}
 	
-	func makeLogin(response: LoginModel.Response) {
+	func makeLogin() {
 		let helper = FieldHelper()
 		helper.title = "Login"
 		helper.placeholder = "Enter login"
@@ -33,7 +35,23 @@ final class LoginPresenter: _LoginPresenter {
 		let state = helper.makeState()
 		let viewModel = LoginModel.ViewModel(states: [state])
 		self.controller?.showState(viewModel: viewModel)
-		
+	}
+	
+	func makeMenu(response: LoginModel.Response.Menu) {
+		let helper = MenuHelper()
+		helper.actions = response
+		let state = helper.makeState()
+		let viewModel = LoginModel.ViewModel(states: [state])
+		self.controller?.showState(viewModel: viewModel)
+	}
+	
+	func makeChoseLogin(response: LoginModel.Response.ChoseLogin) {
+		print(123)
+		let helper = ChoseLoginHelper()
+		helper.actions = response
+		let state = helper.makeState()
+		let viewModel = LoginModel.ViewModel(states: [state])
+		self.controller?.showState(viewModel: viewModel)
 	}
 	
 }
