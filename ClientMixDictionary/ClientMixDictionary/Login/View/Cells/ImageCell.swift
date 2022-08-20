@@ -16,7 +16,7 @@ protocol _ImageCell: CellData {
 
 extension _ImageCell {
 	
-	public var height: CGFloat { return 82 }
+	public var height: CGFloat { return 52 }
 	
 	public func hashValues() -> [Int] {
 		return [

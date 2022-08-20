@@ -16,13 +16,37 @@ enum LoginModel {
 	enum Response {
 		
 		struct Menu {
-			var chosenLogin: Command<Void>?
-			var chosenRegistration: Command<Void>?
+			var onLogin: Command<Void>?
+			var onRegistration: Command<Void>?
 		}
 		
 		struct ChoseLogin {
-			var chosenEmale: Command<Void>?
-			var chosenPhone: Command<Void>?
+			var onBack: Command<Void>?
+			var onEmail: Command<Void>?
+			var onPhone: Command<Void>?
+		}
+		
+		enum Login {
+			
+			struct EntryEmail {
+				var onBack: Command<Void>?
+				var onNext: Command<String>?
+			}
+			
+			struct EntryPassword {
+				var onBack: Command<Void>?
+				var onNext: Command<String>?
+			}
+			
+			struct EntryPhone {
+				var onBack: Command<Void>?
+				var onNext: Command<String>?
+			}
+			
+			struct EntryPhoneCode {
+				var onBack: Command<Void>?
+				var onNext: Command<String>?
+			}
 		}
 		
 	}

@@ -36,9 +36,11 @@ class MenuHelper: _TableHelper {
 	
 	func makeElements() -> [Element] {
 		guard
-			let choseLogin = self.actions?.chosenLogin,
-			let choseRegistration = self.actions?.chosenRegistration
-		else { return [] }
+			let choseLogin = self.actions?.onLogin,
+			let choseRegistration = self.actions?.onRegistration
+		else {
+			return []
+		}
 		let login = LoginView.ViewState.MenuCell(
 			id: "loginElem",
 			image: UIImage(systemName: "person.crop.circle"),
@@ -51,7 +53,8 @@ class MenuHelper: _TableHelper {
 			title: "Registration",
 			onItemSelect: choseRegistration
 		)
-		return[login.toElement(), registration.toElement()]
+		let elements = [login, registration].map( { $0.toElement() } )
+		return elements
 	}
 	
 	func makeSection() -> SectionState {

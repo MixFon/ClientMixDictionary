@@ -8,7 +8,7 @@
 import UIKit
 import CoreTableView
 
-class ChoseLoginHelper: _TableHelper {
+class OptionsLoginHelper: _TableHelper {
 	
 	var actions: LoginModel.Response.ChoseLogin?
 	
@@ -36,22 +36,32 @@ class ChoseLoginHelper: _TableHelper {
 	
 	func makeElements() -> [Element] {
 		guard
-			let chosenEmale = self.actions?.chosenEmale,
-			let chosenPhone = self.actions?.chosenPhone
-		else { return [] }
+			let onEmail = self.actions?.onEmail,
+			let onPhone = self.actions?.onPhone,
+			let onBack = self.actions?.onBack
+		else {
+			return []
+		}
 		let login = LoginView.ViewState.MenuCell(
 			id: "emailElem",
 			image: UIImage(systemName: "mail"),
-			title: "Emale",
-			onItemSelect: chosenEmale
+			title: "Email",
+			onItemSelect: onEmail
 		)
 		let registration = LoginView.ViewState.MenuCell(
 			id: "phoneElem",
 			image: UIImage(systemName: "phone"),
-			title: "Registration",
-			onItemSelect: chosenPhone
+			title: "Phone",
+			onItemSelect: onPhone
 		)
-		return[login.toElement(), registration.toElement()]
+		let back = LoginView.ViewState.MenuCell(
+			id: "backElem",
+			image: UIImage(systemName: "chevron.backward.circle"),
+			title: "Back",
+			onItemSelect: onBack
+		)
+		let elements = [login, registration, back].map( { $0.toElement() } )
+		return elements
 	}
 	
 	func makeSection() -> SectionState {

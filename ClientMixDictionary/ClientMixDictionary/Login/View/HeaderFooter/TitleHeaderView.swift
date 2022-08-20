@@ -19,17 +19,22 @@ public protocol _TitleHeaderView : HeaderData {
 extension _TitleHeaderView {
     
     public func hashValues() -> [Int] {
-        return [title.hashValue,style.hashValue,backgroundColor.hashValue,isInsetGrouped.hashValue]
+        return [
+			title.hashValue,
+			style.hashValue,
+			backgroundColor.hashValue,
+			isInsetGrouped.hashValue
+		]
     }
     
     public var height: CGFloat {
         switch self.style {
         case .large:
-            return 42
+            return 52
         case .medium:
-            return 22
+            return 42
         case .small:
-            return 18
+            return 32
         }
     }
     
