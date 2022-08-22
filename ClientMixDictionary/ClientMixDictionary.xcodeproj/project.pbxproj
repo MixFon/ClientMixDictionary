@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		296A464528AD644A00E70222 /* OptionsLoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296A464428AD644A00E70222 /* OptionsLoginHelper.swift */; };
 		2971C27728B0D19F00E409FC /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2971C27628B0D19F00E409FC /* Credentials.swift */; };
+		2971C27A28B1415E00E409FC /* InfoImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2971C27828B1415E00E409FC /* InfoImageCell.swift */; };
+		2971C27B28B1415E00E409FC /* InfoImageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2971C27928B1415E00E409FC /* InfoImageCell.xib */; };
 		299B22C828AA733F00D84459 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299B22C728AA733F00D84459 /* AppDelegate.swift */; };
 		299B22CA28AA733F00D84459 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299B22C928AA733F00D84459 /* SceneDelegate.swift */; };
 		299B22CC28AA733F00D84459 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299B22CB28AA733F00D84459 /* LoginController.swift */; };
@@ -35,6 +37,9 @@
 		299B232728AB6D3B00D84459 /* MenuHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299B232628AB6D3B00D84459 /* MenuHeader.swift */; };
 		299B232E28ABCA0B00D84459 /* TitleHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 299B232C28ABCA0B00D84459 /* TitleHeaderView.xib */; };
 		299B232F28ABCA0B00D84459 /* TitleHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 299B232D28ABCA0B00D84459 /* TitleHeaderView.swift */; };
+		29CCC15828B3570C00E9F3F4 /* InfoLableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CCC15628B3570C00E9F3F4 /* InfoLableCell.swift */; };
+		29CCC15928B3570C00E9F3F4 /* InfoLableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 29CCC15728B3570C00E9F3F4 /* InfoLableCell.xib */; };
+		29CCC15B28B362AB00E9F3F4 /* InfoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29CCC15A28B362AB00E9F3F4 /* InfoHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +62,8 @@
 /* Begin PBXFileReference section */
 		296A464428AD644A00E70222 /* OptionsLoginHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsLoginHelper.swift; sourceTree = "<group>"; };
 		2971C27628B0D19F00E409FC /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
+		2971C27828B1415E00E409FC /* InfoImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoImageCell.swift; sourceTree = "<group>"; };
+		2971C27928B1415E00E409FC /* InfoImageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoImageCell.xib; sourceTree = "<group>"; };
 		299B22C428AA733F00D84459 /* ClientMixDictionary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClientMixDictionary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		299B22C728AA733F00D84459 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		299B22C928AA733F00D84459 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +92,9 @@
 		299B232628AB6D3B00D84459 /* MenuHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuHeader.swift; sourceTree = "<group>"; };
 		299B232C28ABCA0B00D84459 /* TitleHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TitleHeaderView.xib; sourceTree = "<group>"; };
 		299B232D28ABCA0B00D84459 /* TitleHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleHeaderView.swift; sourceTree = "<group>"; };
+		29CCC15628B3570C00E9F3F4 /* InfoLableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoLableCell.swift; sourceTree = "<group>"; };
+		29CCC15728B3570C00E9F3F4 /* InfoLableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoLableCell.xib; sourceTree = "<group>"; };
+		29CCC15A28B362AB00E9F3F4 /* InfoHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -204,6 +214,7 @@
 				299B232328AB66C800D84459 /* MenuHelper.swift */,
 				299B231D28AAB64100D84459 /* FieldHelper.swift */,
 				296A464428AD644A00E70222 /* OptionsLoginHelper.swift */,
+				29CCC15A28B362AB00E9F3F4 /* InfoHelper.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -232,6 +243,10 @@
 				299B230E28AA7EA000D84459 /* CredentialsCell.xib */,
 				299B231F28AB61F600D84459 /* ImageCell.swift */,
 				299B232028AB61F600D84459 /* ImageCell.xib */,
+				2971C27828B1415E00E409FC /* InfoImageCell.swift */,
+				2971C27928B1415E00E409FC /* InfoImageCell.xib */,
+				29CCC15628B3570C00E9F3F4 /* InfoLableCell.swift */,
+				29CCC15728B3570C00E9F3F4 /* InfoLableCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -369,8 +384,10 @@
 				299B232E28ABCA0B00D84459 /* TitleHeaderView.xib in Resources */,
 				299B22D428AA734200D84459 /* LaunchScreen.storyboard in Resources */,
 				299B22D128AA734200D84459 /* Assets.xcassets in Resources */,
+				2971C27B28B1415E00E409FC /* InfoImageCell.xib in Resources */,
 				299B230A28AA7A2D00D84459 /* LoginView.xib in Resources */,
 				299B232228AB61F600D84459 /* ImageCell.xib in Resources */,
+				29CCC15928B3570C00E9F3F4 /* InfoLableCell.xib in Resources */,
 				299B231028AA7EA000D84459 /* CredentialsCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -403,13 +420,16 @@
 				299B231528AAADCE00D84459 /* LoginInteractor.swift in Sources */,
 				299B230828AA78B200D84459 /* LoginModel.swift in Sources */,
 				299B232128AB61F600D84459 /* ImageCell.swift in Sources */,
+				29CCC15828B3570C00E9F3F4 /* InfoLableCell.swift in Sources */,
 				299B231928AAB1DA00D84459 /* LoginRouter.swift in Sources */,
 				299B231C28AAB4D300D84459 /* TableHelper.swift in Sources */,
 				299B232428AB66C800D84459 /* MenuHelper.swift in Sources */,
+				29CCC15B28B362AB00E9F3F4 /* InfoHelper.swift in Sources */,
 				2971C27728B0D19F00E409FC /* Credentials.swift in Sources */,
 				299B232F28ABCA0B00D84459 /* TitleHeaderView.swift in Sources */,
 				299B22C828AA733F00D84459 /* AppDelegate.swift in Sources */,
 				296A464528AD644A00E70222 /* OptionsLoginHelper.swift in Sources */,
+				2971C27A28B1415E00E409FC /* InfoImageCell.swift in Sources */,
 				299B22CA28AA733F00D84459 /* SceneDelegate.swift in Sources */,
 				299B231E28AAB64100D84459 /* FieldHelper.swift in Sources */,
 				299B230228AA75CB00D84459 /* LoginView.swift in Sources */,

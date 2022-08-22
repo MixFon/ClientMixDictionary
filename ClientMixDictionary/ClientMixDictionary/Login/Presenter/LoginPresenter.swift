@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreTableView
+import UIKit
 
 protocol _LoginPresenter {
 	func buildMenu(response: LoginModel.Response.Menu)
@@ -30,7 +31,20 @@ final class LoginPresenter: _LoginPresenter {
 		let helper = MenuHelper()
 		helper.actions = response
 		let state = helper.makeState()
-		let viewModel = LoginModel.ViewModel(states: [state])
+		
+		let helperError = InfoHelper()
+		helperError.infoImage = UIImage.init(systemName: "xmark")
+		helperError.imageColor = .systemRed
+		
+		helperError.text = "Error message!"
+		helperError.font = .systemFont(ofSize: 17)
+		
+		helperError.onSelect = Command {
+			print("onSelect")
+		}
+		
+		let erroeState = helperError.makeState()
+		let viewModel = LoginModel.ViewModel(states: [state, erroeState])
 		self.controller?.showState(viewModel: viewModel)
 	}
 	

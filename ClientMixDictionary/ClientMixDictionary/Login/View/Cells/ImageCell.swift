@@ -20,7 +20,8 @@ extension _ImageCell {
 	
 	public func hashValues() -> [Int] {
 		return [
-			
+			image.hashValue,
+			title.hashValue
 		]
 	}
 	

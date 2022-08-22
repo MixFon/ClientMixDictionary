@@ -53,8 +53,7 @@ class MenuHelper: _TableHelper {
 			title: "Registration",
 			onItemSelect: choseRegistration
 		)
-		let elements = [login, registration].map( { $0.toElement() } )
-		return elements
+		return [login.toElement(), registration.toElement()]
 	}
 	
 	func makeSection() -> SectionState {

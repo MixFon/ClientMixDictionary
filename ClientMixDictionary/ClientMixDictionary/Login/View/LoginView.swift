@@ -36,6 +36,20 @@ class LoginView: UIView {
 			var backgroundColor: UIColor
 			var isInsetGrouped: Bool
 		}
+		
+		struct InfoImageCell: _InfoImageCell {
+			var id: String
+			var infoImage: UIImage?
+			var imageCollor: UIColor?
+		}
+		
+		struct LableCell: _InfoLableCell {
+			var id: String
+			var text: String
+			var font: UIFont
+			var height: CGFloat
+			var onItemSelect: Command<Void>
+		}
 	}
 	
 	override init(frame: CGRect) {
