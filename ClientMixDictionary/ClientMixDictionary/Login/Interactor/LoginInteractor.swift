@@ -13,8 +13,15 @@ protocol _LoginInteractor {
 	func makeLoginOptions(request: LoginModel.Request)
 	func makeLoginEnteryEmail(request: LoginModel.Request)
 	func makeLoginEnteryPassword(request: LoginModel.Request)
-	func makeLoginEnterPhone(request: LoginModel.Request)
-	func makeLoginEnterPhoneCode(request: LoginModel.Request)
+	func makeLoginEnteryPhone(request: LoginModel.Request)
+	func makeLoginEnteryPhoneCode(request: LoginModel.Request)
+	
+	func makeRegistrationOptions(request: LoginModel.Request)
+	func makeRegistrationEnteryEmail(request: LoginModel.Request)
+	func makeRegistrationEnteryPassword(request: LoginModel.Request)
+	func makeRegistrationEnteryConfirmPassword(request: LoginModel.Request)
+	func makeRegistrationEnteryPhone(request: LoginModel.Request)
+	func makeRegistrationEnteryPhoneCode(request: LoginModel.Request)
 }
 
 protocol _LoginDataStore {
@@ -31,6 +38,7 @@ final class LoginInteractor: _LoginInteractor, _LoginDataStore {
 		self.presenter = presenter
 	}
 	
+	// MARK: Start menu
 	/// Создает действия для стартового меню.
 	func makeMenu(request: LoginModel.Request) {
 		let response = LoginModel.Response.Menu(
@@ -40,12 +48,14 @@ final class LoginInteractor: _LoginInteractor, _LoginDataStore {
 			},
 			onRegistration: Command {
 				print("REG")
+				self.makeRegistrationOptions(request: .init())
 			}
 		)
 		self.presenter?.buildMenu(response: response)
 	}
 	
-	/// Создает действия для состояния выбора способа входа в систему.
+	// MARK: Login
+	/// Выбор способа входа в систему.
 	func makeLoginOptions(request: LoginModel.Request) {
 		let response = LoginModel.Response.ChoseLogin(
 			onBack: Command {
@@ -55,15 +65,18 @@ final class LoginInteractor: _LoginInteractor, _LoginDataStore {
 				self.makeLoginEnteryEmail(request: .init())
 			},
 			onPhone: Command {
-				self.makeLoginEnterPhone(request: .init())
+				self.makeLoginEnteryPhone(request: .init())
 			}
 		)
 		self.presenter?.buildChoseLogin(response: response)
 	}
 	
-	/// Создание действий для ввода email при входе в систему.
+	/// Ввод email при входе в систему.
 	func makeLoginEnteryEmail(request: LoginModel.Request) {
-		let response = LoginModel.Response.Login.EntryEmail(
+		let response = LoginModel.Response.EntryCredentials(
+			text: nil,
+			title: "Login",
+			placeholder: "Enter email",
 			onBack: Command {
 				self.makeLoginOptions(request: .init())
 			},
@@ -71,12 +84,15 @@ final class LoginInteractor: _LoginInteractor, _LoginDataStore {
 				self.makeLoginEnteryPassword(request: .init())
 			}
 		)
-		self.presenter?.buildLoginEnteryEmail(response: response)
+		self.presenter?.buildEnteryCredentials(response: response)
 	}
 	
-	/// Создание действий для ввода пароля при входе в систему.
+	/// Ввод пароля при входе в систему.
 	func makeLoginEnteryPassword(request: LoginModel.Request) {
-		let response = LoginModel.Response.Login.EntryPassword(
+		let response = LoginModel.Response.EntryCredentials(
+			text: nil,
+			title: "Password",
+			placeholder: "Enter password",
 			onBack: Command {
 				self.makeLoginEnteryEmail(request: .init())
 			},
@@ -84,32 +100,134 @@ final class LoginInteractor: _LoginInteractor, _LoginDataStore {
 				print("Finish login")
 			}
 		)
-		self.presenter?.buildLoginEnteryPassword(response: response)
+		self.presenter?.buildEnteryCredentials(response: response)
 	}
 	
-	/// Создание действий для ввода номера телефона при входе в систему.
-	func makeLoginEnterPhone(request: LoginModel.Request) {
-		let response = LoginModel.Response.Login.EntryPhone(
+	/// Ввод номера телефона при входе в систему.
+	func makeLoginEnteryPhone(request: LoginModel.Request) {
+		let response = LoginModel.Response.EntryCredentials(
+			text: nil,
+			title: "Phone",
+			placeholder: "Enter your phone number",
 			onBack: Command {
 				self.makeLoginOptions(request: .init())
 			},
 			onNext: Command { enteredPassword in
-				self.makeLoginEnterPhoneCode(request: .init())
+				self.makeLoginEnteryPhoneCode(request: .init())
 			}
 		)
-		self.presenter?.buildLoginEnteryPhone(response: response)
+		self.presenter?.buildEnteryCredentials(response: response)
 	}
 	
-	/// Создание действий для ввода кода из смс при входе в систему.
-	func makeLoginEnterPhoneCode(request: LoginModel.Request) {
-		let response = LoginModel.Response.Login.EntryPhoneCode(
+	/// Ввод кода из смс при входе в систему.
+	func makeLoginEnteryPhoneCode(request: LoginModel.Request) {
+		let response = LoginModel.Response.EntryCredentials(
+			text: nil,
+			title: "Code",
+			placeholder: "Enter the code from the sms",
 			onBack: Command {
-				self.makeLoginEnterPhone(request: .init())
+				self.makeLoginEnteryPhone(request: .init())
 			},
 			onNext: Command { enteredPassword in
 				print("Finish entry code")
 			}
 		)
-		self.presenter?.buildLoginEnteryPhoneCode(response: response)
+		self.presenter?.buildEnteryCredentials(response: response)
+	}
+	
+	// MARK: Registration
+	/// Выбор способа регистрации
+	func makeRegistrationOptions(request: LoginModel.Request) {
+		let response = LoginModel.Response.ChoseLogin(
+			onBack: Command {
+				self.makeMenu(request: .init())
+			},
+			onEmail: Command {
+				self.makeRegistrationEnteryEmail(request: .init())
+			},
+			onPhone: Command {
+				self.makeRegistrationEnteryPhone(request: .init())
+			}
+		)
+		self.presenter?.buildChoseRegistration(response: response)
+	}
+	
+	/// Ввод email при регистрации.
+	func makeRegistrationEnteryEmail(request: LoginModel.Request) {
+		let response = LoginModel.Response.EntryCredentials(
+			text: nil,
+			title: "Login",
+			placeholder: "Enter email",
+			onBack: Command {
+				self.makeRegistrationOptions(request: .init())
+			},
+			onNext: Command { enteredEmail in
+				self.makeRegistrationEnteryPassword(request: .init())
+			}
+		)
+		self.presenter?.buildEnteryCredentials(response: response)
+	}
+	
+	/// Ввод пароля при регистрации.
+	func makeRegistrationEnteryPassword(request: LoginModel.Request) {
+		let response = LoginModel.Response.EntryCredentials(
+			title: "Password",
+			placeholder: "Enter password",
+			onBack: Command {
+				self.makeRegistrationEnteryEmail(request: .init())
+			},
+			onNext: Command { enteredPassword in
+				self.makeRegistrationEnteryConfirmPassword(request: .init())
+			}
+		)
+		self.presenter?.buildEnteryCredentials(response: response)
+	}
+	
+	/// Ввод пароля подтверждения при регистрации.
+	func makeRegistrationEnteryConfirmPassword(request: LoginModel.Request) {
+		let response = LoginModel.Response.EntryCredentials(
+			title: "Confirm password",
+			placeholder: "Enter password",
+			onBack: Command {
+				self.makeRegistrationEnteryPassword(request: .init())
+			},
+			onNext: Command { enteredPassword in
+				print("Finish confimr password")
+				//self.makeRegistrationEnteryConfirmPassword(request: .init())
+			}
+		)
+		self.presenter?.buildEnteryCredentials(response: response)
+	}
+	
+	/// Ввод номера телефона при регистрации.
+	func makeRegistrationEnteryPhone(request: LoginModel.Request) {
+		let response = LoginModel.Response.EntryCredentials(
+			text: nil,
+			title: "Phone",
+			placeholder: "Enter your phone number",
+			onBack: Command {
+				self.makeRegistrationOptions(request: .init())
+			},
+			onNext: Command { enteredPassword in
+				self.makeRegistrationEnteryPhoneCode(request: .init())
+			}
+		)
+		self.presenter?.buildEnteryCredentials(response: response)
+	}
+	
+	/// Ввод кода из смс при регистрации.
+	func makeRegistrationEnteryPhoneCode(request: LoginModel.Request) {
+		let response = LoginModel.Response.EntryCredentials(
+			text: nil,
+			title: "Code",
+			placeholder: "Enter the code from the sms",
+			onBack: Command {
+				self.makeRegistrationEnteryPhone(request: .init())
+			},
+			onNext: Command { enteredPassword in
+				print("Finish entry code")
+			}
+		)
+		self.presenter?.buildEnteryCredentials(response: response)
 	}
 }

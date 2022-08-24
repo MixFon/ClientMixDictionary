@@ -26,27 +26,18 @@ enum LoginModel {
 			var onPhone: Command<Void>?
 		}
 		
-		enum Login {
-			
-			struct EntryEmail {
-				var onBack: Command<Void>?
-				var onNext: Command<String>?
-			}
-			
-			struct EntryPassword {
-				var onBack: Command<Void>?
-				var onNext: Command<String>?
-			}
-			
-			struct EntryPhone {
-				var onBack: Command<Void>?
-				var onNext: Command<String>?
-			}
-			
-			struct EntryPhoneCode {
-				var onBack: Command<Void>?
-				var onNext: Command<String>?
-			}
+		struct ChoseRegistration {
+			var onBack: Command<Void>?
+			var onEmail: Command<Void>?
+			var onPhone: Command<Void>?
+		}
+		
+		struct EntryCredentials {
+			var text: String?
+			var title: String?
+			var placeholder: String?
+			var onBack: Command<Void>?
+			var onNext: Command<String>?
 		}
 		
 	}

@@ -1,14 +1,15 @@
 //
-//  ChoseLoginHelper.swift
+//  OptinonsRegistrationHelper.swift
 //  ClientMixDictionary
 //
-//  Created by Михаил Фокин on 17.08.2022.
+//  Created by Михаил Фокин on 24.08.2022.
 //
 
-import UIKit
+import Foundation
 import CoreTableView
+import UIKit
 
-class OptionsLoginHelper: _TableHelper {
+class OptionsRegistrationHelper: _TableHelper {
 	
 	var actions: LoginModel.Response.ChoseLogin?
 	
@@ -21,8 +22,8 @@ class OptionsLoginHelper: _TableHelper {
 	
 	func makeHeader() -> HeaderData? {
 		let header = LoginView.ViewState.MenuHeader(
-			id: "choseHeader",
-			title: "Login options",
+			id: "choseHeaderReg",
+			title: "Registration options",
 			style: .large,
 			backgroundColor: .clear,
 			isInsetGrouped: true
@@ -43,19 +44,19 @@ class OptionsLoginHelper: _TableHelper {
 			return []
 		}
 		let login = LoginView.ViewState.MenuCell(
-			id: "emailElem",
-			image: UIImage(systemName: "at"),
+			id: "emailElemReg",
+			image: UIImage(systemName: "at.badge.plus"),
 			title: "Email",
 			onItemSelect: onEmail
 		)
 		let registration = LoginView.ViewState.MenuCell(
-			id: "phoneElem",
-			image: UIImage(systemName: "phone"),
+			id: "phoneElemReg",
+			image: UIImage(systemName: "phone.badge.plus"),
 			title: "Phone",
 			onItemSelect: onPhone
 		)
 		let back = LoginView.ViewState.MenuCell(
-			id: "backElem",
+			id: "backElemReg",
 			image: UIImage(systemName: "chevron.backward.circle"),
 			title: "Back",
 			onItemSelect: onBack
@@ -66,7 +67,7 @@ class OptionsLoginHelper: _TableHelper {
 	
 	func makeSection() -> SectionState {
 		let section = SectionState(
-			id: "choseSection",
+			id: "choseSectionReg",
 			isCollapsed: false,
 			header: makeHeader(),
 			footer: makeFooter()

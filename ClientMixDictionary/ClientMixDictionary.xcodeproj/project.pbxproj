@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		290E776128B5F66E00E12231 /* OptinonsRegistrationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290E776028B5F66E00E12231 /* OptinonsRegistrationHelper.swift */; };
 		296A464528AD644A00E70222 /* OptionsLoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296A464428AD644A00E70222 /* OptionsLoginHelper.swift */; };
 		2971C27728B0D19F00E409FC /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2971C27628B0D19F00E409FC /* Credentials.swift */; };
 		2971C27A28B1415E00E409FC /* InfoImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2971C27828B1415E00E409FC /* InfoImageCell.swift */; };
@@ -60,6 +61,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		290E776028B5F66E00E12231 /* OptinonsRegistrationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptinonsRegistrationHelper.swift; sourceTree = "<group>"; };
 		296A464428AD644A00E70222 /* OptionsLoginHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsLoginHelper.swift; sourceTree = "<group>"; };
 		2971C27628B0D19F00E409FC /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		2971C27828B1415E00E409FC /* InfoImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoImageCell.swift; sourceTree = "<group>"; };
@@ -215,6 +217,7 @@
 				299B231D28AAB64100D84459 /* FieldHelper.swift */,
 				296A464428AD644A00E70222 /* OptionsLoginHelper.swift */,
 				29CCC15A28B362AB00E9F3F4 /* InfoHelper.swift */,
+				290E776028B5F66E00E12231 /* OptinonsRegistrationHelper.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -421,6 +424,7 @@
 				299B230828AA78B200D84459 /* LoginModel.swift in Sources */,
 				299B232128AB61F600D84459 /* ImageCell.swift in Sources */,
 				29CCC15828B3570C00E9F3F4 /* InfoLableCell.swift in Sources */,
+				290E776128B5F66E00E12231 /* OptinonsRegistrationHelper.swift in Sources */,
 				299B231928AAB1DA00D84459 /* LoginRouter.swift in Sources */,
 				299B231C28AAB4D300D84459 /* TableHelper.swift in Sources */,
 				299B232428AB66C800D84459 /* MenuHelper.swift in Sources */,
