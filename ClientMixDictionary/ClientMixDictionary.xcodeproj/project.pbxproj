@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		290E776128B5F66E00E12231 /* OptinonsRegistrationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 290E776028B5F66E00E12231 /* OptinonsRegistrationHelper.swift */; };
+		2915232A28BBCAB400EB7715 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2915232928BBCAB400EB7715 /* GoogleService-Info.plist */; };
+		2915232D28BBCB8800EB7715 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 2915232C28BBCB8800EB7715 /* FirebaseAuth */; };
+		2915232F28BBD00200EB7715 /* Authentications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2915232E28BBD00200EB7715 /* Authentications.swift */; };
+		2915233128BBD0D200EB7715 /* AuthFirebaseAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2915233028BBD0D200EB7715 /* AuthFirebaseAdapter.swift */; };
 		296A464528AD644A00E70222 /* OptionsLoginHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 296A464428AD644A00E70222 /* OptionsLoginHelper.swift */; };
 		2971C27728B0D19F00E409FC /* Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2971C27628B0D19F00E409FC /* Credentials.swift */; };
 		2971C27A28B1415E00E409FC /* InfoImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2971C27828B1415E00E409FC /* InfoImageCell.swift */; };
@@ -62,6 +66,9 @@
 
 /* Begin PBXFileReference section */
 		290E776028B5F66E00E12231 /* OptinonsRegistrationHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptinonsRegistrationHelper.swift; sourceTree = "<group>"; };
+		2915232928BBCAB400EB7715 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2915232E28BBD00200EB7715 /* Authentications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentications.swift; sourceTree = "<group>"; };
+		2915233028BBD0D200EB7715 /* AuthFirebaseAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthFirebaseAdapter.swift; sourceTree = "<group>"; };
 		296A464428AD644A00E70222 /* OptionsLoginHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsLoginHelper.swift; sourceTree = "<group>"; };
 		2971C27628B0D19F00E409FC /* Credentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credentials.swift; sourceTree = "<group>"; };
 		2971C27828B1415E00E409FC /* InfoImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoImageCell.swift; sourceTree = "<group>"; };
@@ -105,6 +112,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				299B22FC28AA745D00D84459 /* CoreTableView in Frameworks */,
+				2915232D28BBCB8800EB7715 /* FirebaseAuth in Frameworks */,
 				299B231328AA7F8400D84459 /* CoreExtensions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -126,6 +134,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2915233428BBDA1E00EB7715 /* Adapter */ = {
+			isa = PBXGroup;
+			children = (
+				2915233028BBD0D200EB7715 /* AuthFirebaseAdapter.swift */,
+			);
+			path = Adapter;
+			sourceTree = "<group>";
+		};
 		299B22BB28AA733F00D84459 = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +165,7 @@
 		299B22C628AA733F00D84459 /* ClientMixDictionary */ = {
 			isa = PBXGroup;
 			children = (
+				2915232928BBCAB400EB7715 /* GoogleService-Info.plist */,
 				299B231A28AAB48E00D84459 /* Protocols */,
 				299B22FD28AA748300D84459 /* Login */,
 				299B22C728AA733F00D84459 /* AppDelegate.swift */,
@@ -180,6 +197,7 @@
 		299B22FD28AA748300D84459 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				2915233428BBDA1E00EB7715 /* Adapter */,
 				299B230628AA789B00D84459 /* Model */,
 				299B230528AA770100D84459 /* Interactor */,
 				299B230428AA76F800D84459 /* Presenter */,
@@ -258,6 +276,7 @@
 			isa = PBXGroup;
 			children = (
 				299B231B28AAB4D300D84459 /* TableHelper.swift */,
+				2915232E28BBD00200EB7715 /* Authentications.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -291,6 +310,7 @@
 			packageProductDependencies = (
 				299B22FB28AA745D00D84459 /* CoreTableView */,
 				299B231228AA7F8400D84459 /* CoreExtensions */,
+				2915232C28BBCB8800EB7715 /* FirebaseAuth */,
 			);
 			productName = ClientMixDictionary;
 			productReference = 299B22C428AA733F00D84459 /* ClientMixDictionary.app */;
@@ -367,6 +387,7 @@
 			packageReferences = (
 				299B22FA28AA745D00D84459 /* XCRemoteSwiftPackageReference "CoreTableView" */,
 				299B231128AA7F8400D84459 /* XCRemoteSwiftPackageReference "CoreExtensions" */,
+				2915232B28BBCB8800EB7715 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 299B22C528AA733F00D84459 /* Products */;
 			projectDirPath = "";
@@ -386,6 +407,7 @@
 			files = (
 				299B232E28ABCA0B00D84459 /* TitleHeaderView.xib in Resources */,
 				299B22D428AA734200D84459 /* LaunchScreen.storyboard in Resources */,
+				2915232A28BBCAB400EB7715 /* GoogleService-Info.plist in Resources */,
 				299B22D128AA734200D84459 /* Assets.xcassets in Resources */,
 				2971C27B28B1415E00E409FC /* InfoImageCell.xib in Resources */,
 				299B230A28AA7A2D00D84459 /* LoginView.xib in Resources */,
@@ -430,9 +452,11 @@
 				299B232428AB66C800D84459 /* MenuHelper.swift in Sources */,
 				29CCC15B28B362AB00E9F3F4 /* InfoHelper.swift in Sources */,
 				2971C27728B0D19F00E409FC /* Credentials.swift in Sources */,
+				2915233128BBD0D200EB7715 /* AuthFirebaseAdapter.swift in Sources */,
 				299B232F28ABCA0B00D84459 /* TitleHeaderView.swift in Sources */,
 				299B22C828AA733F00D84459 /* AppDelegate.swift in Sources */,
 				296A464528AD644A00E70222 /* OptionsLoginHelper.swift in Sources */,
+				2915232F28BBD00200EB7715 /* Authentications.swift in Sources */,
 				2971C27A28B1415E00E409FC /* InfoImageCell.swift in Sources */,
 				299B22CA28AA733F00D84459 /* SceneDelegate.swift in Sources */,
 				299B231E28AAB64100D84459 /* FieldHelper.swift in Sources */,
@@ -774,6 +798,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2915232B28BBCB8800EB7715 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		299B22FA28AA745D00D84459 /* XCRemoteSwiftPackageReference "CoreTableView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/MosMetro-official/CoreTableView";
@@ -793,6 +825,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2915232C28BBCB8800EB7715 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2915232B28BBCB8800EB7715 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
 		299B22FB28AA745D00D84459 /* CoreTableView */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 299B22FA28AA745D00D84459 /* XCRemoteSwiftPackageReference "CoreTableView" */;

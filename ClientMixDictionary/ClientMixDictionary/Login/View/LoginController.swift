@@ -56,7 +56,7 @@ extension LoginController: _LoginController {
 	func checkRegistrationState(viewModel: LoginModel.ViewModel.Check.Registration) {
 		switch viewModel {
 		case .login(let email):
-			self.interactor?.checkLoginEnteredEmail(email: email)
+			self.interactor?.checkRegistrationEnteredEmail(email: email)
 		case .password(let password):
 			self.interactor?.checkRegistrationEnteredPassword(password: password)
 		case .confirm(let confirm):

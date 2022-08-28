@@ -32,6 +32,8 @@ final class LoginInteractor: _LoginInteractor, _LoginDataStore {
 	
 	private var presenter: _LoginPresenter?
 	
+	private var autentification: _Authentications? = AuthFirebaseAdapter()
+	
 	var credentials: Credentials? = .init()
 	
 	init(presenter: _LoginPresenter?) {
@@ -46,42 +48,39 @@ final class LoginInteractor: _LoginInteractor, _LoginDataStore {
 	
 	// MARK: Login
 	func checkLoginEnteredEmail(email: String?) {
-		let check = [true, false]
-		if check.randomElement()! {
-			self.credentials?.email = email
-			self.presenter?.buildLoginEnteryPassword()
-		} else {
-			let response = LoginModel.Response.Info(
-				message: "Error email!",
-				onClose: Command {
-					self.presenter?.buildLoginEnteryEmail()
-				}
-			)
-			self.presenter?.buildError(response: response)
-		}
+		self.credentials?.email = email
+		self.presenter?.buildLoginEnteryPassword()
 	}
 	
 	func checkLoginEnteredPassword(password: String?) {
-		let check = [true, false]
-		if check.randomElement()! {
-			self.credentials?.password = password
-			dump(self.credentials)
-			let response = LoginModel.Response.Info(
-				message: "Success password!",
-				onClose: Command {
-					self.presenter?.buildLoginEnteryPassword()
-				}
-			)
-			self.presenter?.buildSaccess(response: response)
-		} else {
-			let response = LoginModel.Response.Info(
-				message: "Error password!",
-				onClose: Command {
-					self.presenter?.buildLoginEnteryPassword()
-				}
-			)
-			self.presenter?.buildError(response: response)
+		self.credentials?.password = password
+		guard
+			let email = self.credentials?.email,
+			let password = self.credentials?.password
+		else {
+			return
 		}
+		self.autentification?.signIn(withEmail: email, password: password, completion: { result in
+			switch result {
+			case .success(_):
+				let response = LoginModel.Response.Info(
+					message: "Login!",
+					onClose: Command {
+						self.presenter?.buildMenu()
+					}
+				)
+				self.presenter?.buildSuccess(response: response)
+			case .failure(let error):
+				print(error.localizedDescription)
+				let response = LoginModel.Response.Info(
+					message: error.localizedDescription,
+					onClose: Command {
+						self.presenter?.buildLoginEnteryPassword()
+					}
+				)
+				self.presenter?.buildError(response: response)
+			}
+		})
 	}
 	
 	func checkLoginEnteredPhone(phone: String?) {
@@ -110,7 +109,7 @@ final class LoginInteractor: _LoginInteractor, _LoginDataStore {
 					self.presenter?.buildLoginEnteryPhone()
 				}
 			)
-			self.presenter?.buildSaccess(response: response)
+			self.presenter?.buildSuccess(response: response)
 		} else {
 			let response = LoginModel.Response.Info(
 				message: "Error phone!",
@@ -124,56 +123,53 @@ final class LoginInteractor: _LoginInteractor, _LoginDataStore {
 	
 	// MARK: Registration
 	func checkRegistrationEnteredEmail(email: String?) {
-		let check = [true, false]
-		if check.randomElement()! {
-			self.credentials?.email = email
-			self.presenter?.buildRegistrationEnteryPassword()
-		} else {
-			let response = LoginModel.Response.Info(
-				message: "Error email!",
-				onClose: Command {
-					self.presenter?.buildRegistrationEnteryEmail()
-				}
-			)
-			self.presenter?.buildError(response: response)
-		}
+		self.credentials?.email = email
+		self.presenter?.buildRegistrationEnteryPassword()
 	}
 	
 	func checkRegistrationEnteredPassword(password: String?) {
-		let check = [true, false]
-		if check.randomElement()! {
-			self.credentials?.password = password
-			self.presenter?.buildRegistrationEnteryConfirm()
-		} else {
+		self.credentials?.password = password
+		self.presenter?.buildRegistrationEnteryConfirm()
+	}
+	
+	func checkRegistrationEnteredConfirm(confirm: String?) {
+		self.credentials?.confirm = confirm
+		guard let email = self.credentials?.email,
+			  let password = self.credentials?.password,
+			  let confirm = self.credentials?.confirm
+		else {
+			return
+		}
+		if password != confirm {
 			let response = LoginModel.Response.Info(
-				message: "Error password!",
+				message: "Passwords are not equal.",
 				onClose: Command {
 					self.presenter?.buildRegistrationEnteryPassword()
 				}
 			)
 			self.presenter?.buildError(response: response)
-		}
-	}
-	
-	func checkRegistrationEnteredConfirm(confirm: String?) {
-		let check = [true, false]
-		if check.randomElement()! {
-			dump(self.credentials)
-			let response = LoginModel.Response.Info(
-				message: "Success password!",
-				onClose: Command {
-					self.presenter?.buildRegistrationEnteryConfirm()
-				}
-			)
-			self.presenter?.buildSaccess(response: response)
 		} else {
-			let response = LoginModel.Response.Info(
-				message: "Error password!",
-				onClose: Command {
-					self.presenter?.buildRegistrationEnteryConfirm()
+			self.autentification?.signUp(withEmail: email, password: password, completion: { result in
+				switch result {
+				case .success(_):
+					let response = LoginModel.Response.Info(
+						message: "User \(email) created!",
+						onClose: Command {
+							self.presenter?.buildMenu()
+						}
+					)
+					self.presenter?.buildSuccess(response: response)
+				case .failure(let error):
+					print(error.localizedDescription)
+					let response = LoginModel.Response.Info(
+						message: error.localizedDescription,
+						onClose: Command {
+							self.presenter?.buildRegistrationEnteryPassword()
+						}
+					)
+					self.presenter?.buildError(response: response)
 				}
-			)
-			self.presenter?.buildError(response: response)
+			})
 		}
 	}
 	
@@ -203,7 +199,7 @@ final class LoginInteractor: _LoginInteractor, _LoginDataStore {
 					self.presenter?.buildRegistrationEnteryPhone()
 				}
 			)
-			self.presenter?.buildSaccess(response: response)
+			self.presenter?.buildSuccess(response: response)
 		} else {
 			let response = LoginModel.Response.Info(
 				message: "Error password!",

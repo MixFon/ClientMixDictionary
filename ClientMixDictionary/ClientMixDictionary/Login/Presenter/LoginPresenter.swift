@@ -26,12 +26,10 @@ protocol _LoginPresenter {
 	func buildRegistrationEnteryCode()
 	
 	func buildError(response: LoginModel.Response.Info)
-	func buildSaccess(response: LoginModel.Response.Info)
+	func buildSuccess(response: LoginModel.Response.Info)
 }
 
 final class LoginPresenter: _LoginPresenter {
-
-	
 	
 	weak var controller: _LoginController?
 	
@@ -253,7 +251,7 @@ final class LoginPresenter: _LoginPresenter {
 		self.controller?.showState(viewModel: viewModel)
 	}
 	
-	func buildSaccess(response: LoginModel.Response.Info) {
+	func buildSuccess(response: LoginModel.Response.Info) {
 		let helperError = InfoHelper()
 		helperError.infoImage = UIImage.init(systemName: "checkmark")
 		helperError.imageColor = .systemGreen
