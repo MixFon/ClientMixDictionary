@@ -9,6 +9,7 @@ import Foundation
 
 struct Credentials {
 	var name: String?
-	var emale: String?
+	var email: String?
 	var phone: String?
+	var password: String?
 }

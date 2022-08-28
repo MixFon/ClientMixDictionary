@@ -16,6 +16,7 @@ class LoginView: UIView {
 		
 		struct FieldCell: _CredentialsCell {
 			var id: String
+			var text: String?
 			var title: String?
 			var placeholger: String?
 			var onNext: Command<String>?

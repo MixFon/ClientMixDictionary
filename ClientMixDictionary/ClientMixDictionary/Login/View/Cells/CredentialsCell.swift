@@ -10,6 +10,7 @@ import CoreTableView
 import CoreExtensions
 
 protocol _CredentialsCell: CellData {
+	var text: String? { get set }
 	var title: String? { get set }
 	var placeholger: String? { get set }
 	var onNext: Command<String>? { get set }
@@ -22,8 +23,9 @@ extension _CredentialsCell {
 	
 	public func hashValues() -> [Int] {
 		return [
+			text.hashValue,
 			title.hashValue,
-			placeholger.hashValue
+			placeholger.hashValue,
 		]
 	}
 	

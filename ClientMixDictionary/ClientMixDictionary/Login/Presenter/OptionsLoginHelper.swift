@@ -10,7 +10,9 @@ import CoreTableView
 
 class OptionsLoginHelper: _TableHelper {
 	
-	var actions: LoginModel.Response.ChoseLogin?
+	var onEmail: Command<Void>?
+	var onPhone: Command<Void>?
+	var onBack: Command<Void>?
 	
 	func makeState() -> State {
 		let elements = makeElements()
@@ -36,9 +38,9 @@ class OptionsLoginHelper: _TableHelper {
 	
 	func makeElements() -> [Element] {
 		guard
-			let onEmail = self.actions?.onEmail,
-			let onPhone = self.actions?.onPhone,
-			let onBack = self.actions?.onBack
+			let onEmail = self.onEmail,
+			let onPhone = self.onPhone,
+			let onBack = self.onBack
 		else {
 			return []
 		}

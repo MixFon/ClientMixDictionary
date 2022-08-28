@@ -9,7 +9,9 @@ import Foundation
 import UIKit
 
 protocol _LoginController: AnyObject {
-	func showState(viewModel: LoginModel.ViewModel)
+	func showState(viewModel: LoginModel.ViewModel.Show)
+	func checkLoginState(viewModel: LoginModel.ViewModel.Check.Login)
+	func checkRegistrationState(viewModel: LoginModel.ViewModel.Check.Registration)
 }
 
 class LoginController: UIViewController {
@@ -32,9 +34,7 @@ class LoginController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		view = nestedView
-		let request = LoginModel.Request()
-		//self.interactor?.makeLogin(request: request)
-		self.interactor?.makeMenu(request: request)
+		self.interactor?.makeMenu()
 		
 	}
 	
@@ -53,9 +53,36 @@ class LoginController: UIViewController {
 
 extension LoginController: _LoginController {
 	
-	func showState(viewModel: LoginModel.ViewModel) {
-		self.nestedView.configute(states: viewModel.states)
+	func checkRegistrationState(viewModel: LoginModel.ViewModel.Check.Registration) {
+		switch viewModel {
+		case .login(let email):
+			self.interactor?.checkLoginEnteredEmail(email: email)
+		case .password(let password):
+			self.interactor?.checkRegistrationEnteredPassword(password: password)
+		case .confirm(let confirm):
+			self.interactor?.checkRegistrationEnteredConfirm(confirm: confirm)
+		case .code(let code):
+			self.interactor?.checkRegistrationEnteredCode(code: code)
+		case .phone(let phone):
+			self.interactor?.checkRegistrationEnteredPhone(phone: phone)
+		}
 	}
 	
+	func checkLoginState(viewModel: LoginModel.ViewModel.Check.Login) {
+		switch viewModel{
+		case .login(let email):
+			self.interactor?.checkLoginEnteredEmail(email: email)
+		case .password(let password):
+			self.interactor?.checkLoginEnteredPassword(password: password)
+		case .code(let code):
+			self.interactor?.checkLoginEnteredCode(code: code)
+		case .phone(let phone):
+			self.interactor?.checkLoginEnteredPhone(phone: phone)
+		}
+	}
+	
+	func showState(viewModel: LoginModel.ViewModel.Show) {
+		self.nestedView.configute(states: viewModel.states)
+	}
 	
 }

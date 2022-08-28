@@ -15,23 +15,6 @@ enum LoginModel {
 	
 	enum Response {
 		
-		struct Menu {
-			var onLogin: Command<Void>?
-			var onRegistration: Command<Void>?
-		}
-		
-		struct ChoseLogin {
-			var onBack: Command<Void>?
-			var onEmail: Command<Void>?
-			var onPhone: Command<Void>?
-		}
-		
-		struct ChoseRegistration {
-			var onBack: Command<Void>?
-			var onEmail: Command<Void>?
-			var onPhone: Command<Void>?
-		}
-		
 		struct EntryCredentials {
 			var text: String?
 			var title: String?
@@ -40,10 +23,34 @@ enum LoginModel {
 			var onNext: Command<String>?
 		}
 		
+		struct Info {
+			var message: String?
+			var onClose: Command<Void>?
+		}
+		
 	}
 	
 	struct ViewModel {
-		var states: [State]
+		struct Show {
+			var states: [State]
+		}
+		
+		enum Check {
+			enum Login {
+				case code(String)
+				case phone(String)
+				case login(String)
+				case password(String)
+			}
+			
+			enum Registration {
+				case code(String)
+				case phone(String)
+				case login(String)
+				case password(String)
+				case confirm(String)
+			}
+		}
 	}
 	
 }

@@ -10,7 +10,8 @@ import UIKit
 
 class MenuHelper: _TableHelper {
 	
-	var actions: LoginModel.Response.Menu?
+	var choseLogin: Command<Void>?
+	var choseRegistration: Command<Void>?
 	
 	func makeState() -> State {
 		let elements = makeElements()
@@ -36,8 +37,8 @@ class MenuHelper: _TableHelper {
 	
 	func makeElements() -> [Element] {
 		guard
-			let choseLogin = self.actions?.onLogin,
-			let choseRegistration = self.actions?.onRegistration
+			let choseLogin = self.choseLogin,
+			let choseRegistration = self.choseRegistration
 		else {
 			return []
 		}

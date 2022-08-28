@@ -11,7 +11,11 @@ import UIKit
 
 class FieldHelper: _TableHelper {
 	
-	var actions: LoginModel.Response.EntryCredentials?
+	var text: String?
+	var title: String?
+	var placeholder: String?
+	var onNext: Command<String>?
+	var onBack: Command<Void>?
 	
 	public func makeState() -> State {
 		let elements = makeElements()
@@ -31,10 +35,10 @@ class FieldHelper: _TableHelper {
 	func makeElements() -> [Element] {
 		let model = LoginView.ViewState.FieldCell(
 			id: "fildElement",
-			title: self.actions?.title,
-			placeholger: self.actions?.placeholder,
-			onNext: self.actions?.onNext,
-			onBack: self.actions?.onBack
+			title: self.title,
+			placeholger: self.placeholder,
+			onNext: self.onNext,
+			onBack: self.onBack
 		)
 		return [model.toElement()]
 	}
