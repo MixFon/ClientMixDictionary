@@ -8,7 +8,7 @@
 import CoreTableView
 import UIKit
 
-class MenuHelper: _TableHelper {
+class LoginMenuHelper: _TableHelper {
 	
 	var choseLogin: Command<Void>?
 	var choseRegistration: Command<Void>?

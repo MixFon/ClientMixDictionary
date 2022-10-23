@@ -40,7 +40,7 @@ final class LoginPresenter: _LoginPresenter {
 	// MARK: Start menu
 	/// Меню выбора регистрация или вход в систему
 	func buildMenu() {
-		let helper = MenuHelper()
+		let helper = LoginMenuHelper()
 		helper.choseLogin = Command {
 			self.buildChoseLogin()
 		}
